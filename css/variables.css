@@ -1,0 +1,81 @@
+/* ============================================================
+   variables.css - Design tokens & CSS custom properties
+   All values centralised here. Change once, applies everywhere.
+   Phase 2: dark mode overrides via [data-theme="dark"]
+   ============================================================ */
+
+:root {
+  /* ── Brand Colors ──────────────────────────────────────── */
+  --primary:       #2563eb;
+  --primary-dark:  #1d4ed8;
+  --accent:        #0ea5e9;
+  --dark:          #0f172a;
+  --mid:           #334155;
+  --light:         #f1f5f9;
+  --border:        #e2e8f0;
+  --white:         #ffffff;
+  --bg:            #f8f9fa;
+  --tag-bg:        #dbeafe;
+  --tag-text:      #1e40af;
+
+  /* ── Semantic Aliases (Phase 2 dark mode swaps these) ─── */
+  --bg-page:       var(--bg);
+  --bg-surface:    var(--white);
+  --text-primary:  var(--dark);
+  --text-secondary:var(--mid);
+  --border-color:  var(--border);
+
+  /* ── Status / Badge Colors ─────────────────────────────── */
+  --green:         #16a34a;
+  --green-bg:      #dcfce7;
+  --purple-bg:     #f3e8ff;
+  --purple-text:   #7e22ce;
+  --orange-bg:     #fff7ed;
+  --orange-text:   #c2410c;
+  --yellow-bg:     #fef9c3;
+  --yellow-text:   #854d0e;
+  --slate-400:     #94a3b8;
+  --slate-500:     #64748b;
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --max-width:     960px;
+  --nav-height:    64px;
+  --section-gap:   6rem;
+
+  /* ── Typography ────────────────────────────────────────── */
+  --font-sans:     'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Courier New', monospace;
+
+  /* ── Border Radii ──────────────────────────────────────── */
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     12px;
+  --radius-xl:     14px;
+  --radius-2xl:    16px;
+  --radius-full:   9999px;
+
+  /* ── Shadows ───────────────────────────────────────────── */
+  --shadow-card:   0 8px 30px rgba(37, 99, 235, 0.1);
+
+  /* ── Transitions ───────────────────────────────────────── */
+  --transition:    all 0.2s ease;
+}
+
+/* ── Phase 2: Dark Mode ──────────────────────────────────────
+   Toggle with: document.documentElement.dataset.theme = 'dark'
+   ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-page:       #0f172a;
+  --bg-surface:    #1e293b;
+  --text-primary:  #f1f5f9;
+  --text-secondary:#94a3b8;
+  --border-color:  #334155;
+  --bg:            #0f172a;
+  --white:         #1e293b;
+  --border:        #334155;
+  --mid:           #94a3b8;
+  --dark:          #f1f5f9;
+  --light:         #1e293b;
+  --tag-bg:        #1e3a5f;
+  --tag-text:      #93c5fd;
+}

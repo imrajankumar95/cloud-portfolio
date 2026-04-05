@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "note": "Reference file. Currently, data is loaded from js/data.js (works without a server). When hosted on GitHub Pages or Netlify, you can switch to fetch('/data/projects.json') in main.js.",
+    "owner": "Rajan Kumar",
+    "github": "https://github.com/imrajankumar95",
+    "updated": "2026-04"
+  },
+  "projects": [
+    {
+      "id": "migration-arc",
+      "flagship": true,
+      "badge": {
+        "label": "⚡ Flagship Project",
+        "cssClass": "badge-flagship"
+      },
+      "status": "In Progress",
+      "title": "The Migration Arc",
+      "repo": "the-migration-arc",
+      "repoUrl": "https://github.com/imrajankumar95/the-migration-arc",
+      "description": "An end-to-end cloud migration and deployment platform simulating a real-world scenario of moving a workload from on-premises infrastructure to the cloud - with full CI/CD automation, containerization, and multi-cloud deployment across Azure and AWS.",
+      "architecture": "Code Push → GitHub Actions CI/CD → Docker Build → Terraform Provision → Azure + AWS Deploy → Monitoring",
+      "problem": "Organizations face high-risk, manual migration processes when moving workloads to the cloud. This project automates the full migration lifecycle - reducing human error, enforcing infrastructure consistency, and enabling repeatable deployments across multiple cloud providers.",
+      "stack": ["Python", "Docker", "Terraform", "GitHub Actions", "Azure", "AWS", "Multi-Cloud", "CI/CD"]
+    },
+    {
+      "id": "azure-vm-nginx",
+      "flagship": false,
+      "badge": {
+        "label": "☁ Azure · Linux",
+        "cssClass": "badge-cloud"
+      },
+      "status": "In Progress",
+      "title": "Azure VM + Bash Automation",
+      "repo": "azure-vm-nginx-automation",
+      "repoUrl": "https://github.com/imrajankumar95/azure-vm-nginx-automation",
+      "description": "Automated deployment of a Linux VM on Azure with NGINX installation, configuration, and networking setup handled entirely through Bash scripts.",
+      "architecture": "Azure CLI → VM Provision → Bash Scripts → NGINX Config → NSG Rules → Public Endpoint",
+      "problem": "Manual VM setup is slow, error-prone, and non-repeatable. This project automates the full deployment lifecycle from VM creation to serving traffic.",
+      "stack": ["Azure", "Bash", "Linux", "NGINX", "Azure CLI", "NSG"]
+    },
+    {
+      "id": "infra-monitoring",
+      "flagship": false,
+      "badge": {
+        "label": "📊 Observability",
+        "cssClass": "badge-obs"
+      },
+      "status": "In Progress",
+      "title": "Infrastructure Monitoring Stack",
+      "repo": "infrastructure-monitoring",
+      "repoUrl": "https://github.com/imrajankumar95/infrastructure-monitoring",
+      "description": "A full-stack monitoring and alerting system using Prometheus, Grafana, and AlertManager to track the health, performance, and availability of cloud infrastructure.",
+      "architecture": "Prometheus Scrape → Metrics Store → Grafana Dashboards → AlertManager → Notification Rules",
+      "problem": "Without observability, production issues go undetected until users report them. This project establishes a monitoring baseline with automated alerting for threshold breaches.",
+      "stack": ["Prometheus", "Grafana", "AlertManager", "Docker", "YAML", "Linux"]
+    }
+  ]
+}

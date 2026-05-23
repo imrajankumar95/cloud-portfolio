@@ -132,12 +132,12 @@ const PORTFOLIO_DATA = {
       repo: "the-migration-arc",
       repoUrl: "https://github.com/imrajankumar95/the-migration-arc",
       description:
-        "End-to-end cloud migration pipeline built at George Brown College - from a local on-premises baseline all the way to a Kubernetes-native deployment on AWS EKS. Each phase adds a real layer of production infrastructure: local VM provisioning, containerization, cloud IaC, container orchestration, and full observability.",
+        "Multi-cloud container deployment pipeline built at George Brown College. Takes a Flask application from local Docker on WSL2 through AWS ECS (Fargate) and AWS EKS (Kubernetes) with LoadBalancer exposure. Phase 4 (Azure AKS) planned. Each phase adds a real layer of production infrastructure: containerization, managed container services, and Kubernetes orchestration.",
       architecture:
-        "Vagrant VM + Nginx -> Dockerfile -> Docker Hub / AWS ECR -> Terraform -> AWS ECS -> K3s (local K8s) -> AWS EKS -> Prometheus + Grafana",
+        "Flask App (WSL2) -> Docker -> AWS ECR -> AWS ECS (Fargate) -> AWS EKS (eksctl + kubectl) -> Azure AKS (planned)",
       problem:
-        "Demonstrates the complete build-to-deploy lifecycle that cloud and DevOps engineers own in production: reproducible environments, container portability, IaC-driven provisioning, and zero-configuration-drift Kubernetes deployments across local and cloud environments.",
-      stack: ["Vagrant", "Docker", "Terraform", "AWS ECS", "Kubernetes", "K3s", "AWS EKS", "AWS ECR", "IAM", "GitHub Actions"]
+        "Demonstrates the complete build-to-deploy lifecycle that cloud and DevOps engineers own in production: local containerization, cloud container registries, managed container services, and Kubernetes deployments across multiple cloud providers.",
+      stack: ["Docker", "Flask", "WSL2", "AWS ECR", "AWS ECS Fargate", "AWS EKS", "eksctl", "kubectl", "IAM", "GitHub Actions"]
     },
     {
       id: "infra-monitoring",
@@ -203,6 +203,8 @@ const PORTFOLIO_DATA = {
       description: null,
       certs: [
         "Azure Data Engineer Associate (DP-203) - Microsoft",
+        "Microsoft Azure Fundamentals (AZ-900) - Microsoft (May 2026)",
+        "Microsoft 365 Copilot & Agent Administration Fundamentals (AB-900) - Microsoft (May 2026)",
         "Data Engineer in Python - DataCamp (Jan 2025)",
         "Agentic AI on AWS - BESA (2026)",
         "Free Data Engineering Bootcamp - DataExpert.io",

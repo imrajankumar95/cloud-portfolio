@@ -1,6 +1,6 @@
 # Rajan Kumar - Cloud Data & DevOps Portfolio
 
-> Azure Data Engineer (DP-203) · 17 months enterprise experience at TD Bank · George Brown College Cloud Computing
+> Azure Data Engineer (DP-203) · ~2 years enterprise experience at TD Bank · George Brown College Cloud Computing
 
 **Live Site:** [imrajankumar95.github.io/cloud-portfolio](https://imrajankumar95.github.io/cloud-portfolio)
 **GitHub:** [github.com/imrajankumar95](https://github.com/imrajankumar95)

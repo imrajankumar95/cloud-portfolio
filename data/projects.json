@@ -1,9 +1,9 @@
 {
   "meta": {
-    "note": "Reference file. Currently, data is loaded from js/data.js (works without a server). When hosted on GitHub Pages or Netlify, you can switch to fetch('/data/projects.json') in main.js.",
+    "note": "Reference file. Currently, data is loaded from js/data.js (works without a server). When hosted on GitHub Pages or Netlify, you can switch to fetch('/data/projects.json') in main.js. Keep in sync with js/data.js.",
     "owner": "Rajan Kumar",
     "github": "https://github.com/imrajankumar95",
-    "updated": "2026-04"
+    "updated": "2026-07"
   },
   "projects": [
     {
@@ -13,30 +13,47 @@
         "label": "⚡ Flagship Project",
         "cssClass": "badge-flagship"
       },
-      "status": "In Progress",
+      "status": "Complete",
       "title": "The Migration Arc",
       "repo": "the-migration-arc",
       "repoUrl": "https://github.com/imrajankumar95/the-migration-arc",
-      "description": "An end-to-end cloud migration and deployment platform simulating a real-world scenario of moving a workload from on-premises infrastructure to the cloud - with full CI/CD automation, containerization, and multi-cloud deployment across Azure and AWS.",
-      "architecture": "Code Push → GitHub Actions CI/CD → Docker Build → Terraform Provision → Azure + AWS Deploy → Monitoring",
-      "problem": "Organizations face high-risk, manual migration processes when moving workloads to the cloud. This project automates the full migration lifecycle - reducing human error, enforcing infrastructure consistency, and enabling repeatable deployments across multiple cloud providers.",
-      "stack": ["Python", "Docker", "Terraform", "GitHub Actions", "Azure", "AWS", "Multi-Cloud", "CI/CD"]
+      "description": "Multi-cloud container journey completed in four phases: a Flask application taken from local Docker on WSL2 to AWS ECS (Fargate), then to Kubernetes on AWS EKS, and finally to Azure AKS. Every phase is documented with READMEs, architecture diagrams, screenshots, and a DECISIONS.md engineering log. All cloud resources were torn down after validation - total spend kept near $0.",
+      "architecture": "Flask App (WSL2) → Docker → AWS ECR → AWS ECS (Fargate) → AWS EKS → Azure AKS",
+      "problem": "Demonstrates the complete build-to-deploy lifecycle that cloud and DevOps engineers own in production: containerization, cloud container registries, managed container services, and Kubernetes deployments on two cloud providers - plus the cost discipline to tear it all down when done.",
+      "stack": ["Docker", "Flask", "AWS ECR", "AWS ECS Fargate", "AWS EKS", "Azure AKS", "kubectl", "eksctl", "IAM", "GitHub Actions"]
     },
     {
-      "id": "azure-vm-nginx",
+      "id": "local-to-cloud-starter",
       "flagship": false,
       "badge": {
-        "label": "☁ Azure · Linux",
+        "label": "🚀 Live · CI/CD",
         "cssClass": "badge-cloud"
       },
-      "status": "In Progress",
-      "title": "Azure VM + Bash Automation",
-      "repo": "azure-vm-nginx-automation",
-      "repoUrl": "https://github.com/imrajankumar95/azure-vm-nginx-automation",
-      "description": "Automated deployment of a Linux VM on Azure with NGINX installation, configuration, and networking setup handled entirely through Bash scripts.",
-      "architecture": "Azure CLI → VM Provision → Bash Scripts → NGINX Config → NSG Rules → Public Endpoint",
-      "problem": "Manual VM setup is slow, error-prone, and non-repeatable. This project automates the full deployment lifecycle from VM creation to serving traffic.",
-      "stack": ["Azure", "Bash", "Linux", "NGINX", "Azure CLI", "NSG"]
+      "status": "Shipped · Live",
+      "title": "Local-to-Cloud Starter",
+      "repo": "local-to-cloud-starter",
+      "repoUrl": "https://github.com/imrajankumar95/local-to-cloud-starter",
+      "liveUrl": "https://ashy-bay-0d76ae90f.7.azurestaticapps.net",
+      "description": "First project shipped to production and still live today: a static site containerized with NGINX and Docker for local development, deployed to Azure Static Web Apps through a GitHub Actions pipeline. Every push to main triggers an automatic build and deploy - zero manual steps.",
+      "architecture": "NGINX + Docker (local, WSL2) → GitHub Push → GitHub Actions → Azure Static Web Apps",
+      "problem": "Proves the simplest complete path from local development to a live cloud endpoint with zero-touch deployment - the CI/CD foundation pattern reused in every later project.",
+      "stack": ["NGINX", "Docker", "GitHub Actions", "Azure Static Web Apps", "WSL2", "Git"]
+    },
+    {
+      "id": "k8s-log-explainer",
+      "flagship": false,
+      "badge": {
+        "label": "🤖 AI · AKS Capstone",
+        "cssClass": "badge-obs"
+      },
+      "status": "In Progress · Ships Jul 2026",
+      "title": "K8s Log Explainer",
+      "repo": "k8s-log-explainer",
+      "repoUrl": null,
+      "description": "Capstone in flight: an application on Azure AKS ships pod logs to an LLM API that returns plain-English incident summaries - applied AIOps. Infrastructure provisioned with Terraform, deployed via GitHub Actions, with Prometheus and Grafana dashboards on top. Repository goes public at launch.",
+      "architecture": "AKS Pods → Log Collector → LLM API → Plain-English Incident Summary + Prometheus / Grafana",
+      "problem": "On-call engineers drown in raw Kubernetes logs. This capstone turns log noise into readable incident explanations - combining cloud infrastructure, DevOps automation, observability, and applied AI in a single system.",
+      "stack": ["Azure AKS", "Terraform", "GitHub Actions", "Prometheus", "Grafana", "LLM API", "Python"]
     },
     {
       "id": "infra-monitoring",
@@ -49,10 +66,26 @@
       "title": "Infrastructure Monitoring Stack",
       "repo": "infrastructure-monitoring",
       "repoUrl": "https://github.com/imrajankumar95/infrastructure-monitoring",
-      "description": "A full-stack monitoring and alerting system using Prometheus, Grafana, and AlertManager to track the health, performance, and availability of cloud infrastructure.",
-      "architecture": "Prometheus Scrape → Metrics Store → Grafana Dashboards → AlertManager → Notification Rules",
-      "problem": "Without observability, production issues go undetected until users report them. This project establishes a monitoring baseline with automated alerting for threshold breaches.",
-      "stack": ["Prometheus", "Grafana", "AlertManager", "Docker", "YAML", "Linux"]
+      "description": "Full observability stack deployed with Docker Compose - Prometheus for metrics scraping, Grafana for custom dashboards, Node Exporter for host-level metrics (CPU, memory, disk, network), and AlertManager with Slack and email notification channels. The dashboards and alert rules are being folded into the K8s Log Explainer capstone.",
+      "architecture": "Node Exporter → Prometheus Scrape → Grafana Dashboards → AlertManager → Slack / Email Alerts",
+      "problem": "Production systems need observability before they need new features. This stack replicates what engineering teams actually run - custom dashboards, threshold-based alerting, and cross-environment portability.",
+      "stack": ["Prometheus", "Grafana", "Node Exporter", "AlertManager", "Docker Compose", "AWS EC2", "Slack Integration"]
+    },
+    {
+      "id": "azure-vm-nginx",
+      "flagship": false,
+      "badge": {
+        "label": "☁ Azure · Linux",
+        "cssClass": "badge-cloud"
+      },
+      "status": "Complete",
+      "title": "Azure VM + Bash Automation",
+      "repo": "azure-vm-nginx-automation",
+      "repoUrl": "https://github.com/imrajankumar95/azure-vm-nginx-automation",
+      "description": "Automated deployment of a Linux VM on Azure with NGINX installation, configuration, and networking setup via Bash scripts. Demonstrates core Azure fundamentals alongside practical Linux administration - the foundation for the IaC and CI/CD work in the Migration Arc.",
+      "architecture": "Azure CLI → VM Provision → Bash Scripts → NGINX Config → NSG Rules → Public Endpoint",
+      "problem": "Manual VM setup is slow and non-repeatable. This project automates the full lifecycle from VM creation to serving traffic - building the baseline for Azure infrastructure before moving to Terraform.",
+      "stack": ["Azure", "Bash", "Linux", "NGINX", "Azure CLI", "NSG"]
     }
   ]
 }

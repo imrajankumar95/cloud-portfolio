@@ -1,6 +1,6 @@
-# Rajan Kumar - Cloud Data & DevOps Portfolio
+# Rajan Kumar - Cloud & DevOps Portfolio
 
-> Azure Data Engineer (DP-203) · ~2 years enterprise experience at TD Bank · George Brown College Cloud Computing
+> Azure Administrator (AZ-104) + Azure Data Engineer (DP-203) · ~2 years enterprise experience at TD Bank · George Brown College Cloud Computing
 
 **Live Site:** [imrajankumar95.github.io/cloud-portfolio](https://imrajankumar95.github.io/cloud-portfolio)
 **GitHub:** [github.com/imrajankumar95](https://github.com/imrajankumar95)
@@ -95,12 +95,19 @@ Open `js/data.js` and push a new object into the `projects` array:
 
 ## Featured Projects
 
-### The Migration Arc (Flagship)
-End-to-end cloud migration pipeline - Vagrant VM to AWS EKS via Docker, Terraform, ECS, and Kubernetes.
+### The Migration Arc (Flagship - Complete)
+Four-phase multi-cloud container journey: Flask app from local Docker (WSL2) through AWS ECS (Fargate) and AWS EKS to Azure AKS. Documented with READMEs, diagrams, and DECISIONS.md.
 [github.com/imrajankumar95/the-migration-arc](https://github.com/imrajankumar95/the-migration-arc)
 
+### Local-to-Cloud Starter (Shipped - Live)
+NGINX + Docker site deployed via GitHub Actions CI/CD to Azure Static Web Apps.
+[Live site](https://ashy-bay-0d76ae90f.7.azurestaticapps.net) · [github.com/imrajankumar95/local-to-cloud-starter](https://github.com/imrajankumar95/local-to-cloud-starter)
+
+### K8s Log Explainer (Capstone - In Progress)
+AKS app ships pod logs to an LLM API for plain-English incident summaries - Terraform, GitHub Actions, Prometheus + Grafana. Repo public at launch (Jul 2026).
+
 ### Infrastructure Monitoring Stack
-Full observability with Prometheus, Grafana, Node Exporter, and AlertManager - deployed on Docker Compose and AWS EC2.
+Full observability with Prometheus, Grafana, Node Exporter, and AlertManager - being folded into the capstone.
 [github.com/imrajankumar95/infrastructure-monitoring](https://github.com/imrajankumar95/infrastructure-monitoring)
 
 ### Azure VM + Bash Automation

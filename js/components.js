@@ -91,7 +91,8 @@ function createSkillCard(skill) {
  * @param {string}  project.status     - "In Progress" | "Complete"
  * @param {string}  project.title
  * @param {string}  project.repo       - Repo slug (e.g. 'the-migration-arc')
- * @param {string}  project.repoUrl    - Full GitHub URL
+ * @param {string|null} project.repoUrl - Full GitHub URL (null = repo not public yet, link hidden)
+ * @param {string}  [project.liveUrl]  - Optional live-demo URL (renders a second link)
  * @param {string}  project.description
  * @param {string}  project.architecture - Pipeline flow string
  * @param {string}  project.problem    - Problem statement text
@@ -130,6 +131,17 @@ function createProjectCard(project) {
         ${stackTagsHtml}
       </div>
 
+      ${project.liveUrl ? `
+      <a
+        href="${escHtml(project.liveUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-link"
+        aria-label="View ${escHtml(project.title)} live site"
+      >
+        View Live Site →
+      </a>` : ''}
+      ${project.repoUrl ? `
       <a
         href="${escHtml(project.repoUrl)}"
         target="_blank"
@@ -138,7 +150,7 @@ function createProjectCard(project) {
         aria-label="View ${escHtml(project.title)} on GitHub"
       >
         View Repository →
-      </a>
+      </a>` : ''}
     </article>`;
 }
 

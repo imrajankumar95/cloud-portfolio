@@ -11,6 +11,8 @@
  *   - Add a skill category: push into PORTFOLIO_DATA.skills
  *   - Add an education entry: push into PORTFOLIO_DATA.education
  *   - The JS components will render everything automatically
+ *
+ * Last content refresh: July 2026 (AZ-104 passed Jul 5, Migration Arc complete)
  */
 
 const PORTFOLIO_DATA = {
@@ -21,22 +23,24 @@ const PORTFOLIO_DATA = {
       title: "☁ Cloud Platforms",
       colorClass: "default",
       tags: [
-        "Microsoft Azure",
-        "Azure VM",
+        "Microsoft Azure (AZ-104 certified)",
+        "Azure AKS",
+        "Azure Virtual Machines",
+        "Azure Static Web Apps",
         "Azure Data Factory",
         "Azure SQL Database",
         "Azure Blob Storage",
-        "Azure DevOps",
-        "Azure AD / RBAC",
+        "Entra ID / RBAC",
+        "Virtual Network / NSG",
+        "ARM Templates & Bicep",
+        "Azure Key Vault",
         "AWS EC2",
-        "AWS S3",
-        "AWS ECS",
+        "AWS ECS Fargate",
         "AWS EKS",
         "AWS ECR",
+        "AWS S3",
         "AWS Lambda",
-        "AWS RDS",
         "AWS IAM",
-        "AWS Bedrock",
         "CloudFormation"
       ]
     },
@@ -46,12 +50,13 @@ const PORTFOLIO_DATA = {
       tags: [
         "Docker",
         "Docker Compose",
-        "Kubernetes (K3s + EKS)",
+        "Kubernetes (AKS · EKS · K3s)",
+        "kubectl & eksctl",
         "Terraform",
         "GitHub Actions",
         "CI/CD Pipelines",
-        "Vagrant",
         "NGINX",
+        "Vagrant",
         "Bash",
         "PowerShell"
       ]
@@ -61,8 +66,9 @@ const PORTFOLIO_DATA = {
       colorClass: "purple",
       tags: [
         "Python (Strong)",
+        "Go",
         "SQL",
-        "Bash",
+        "C++ (240+ DSA problems)",
         "Python ETL Automation",
         "SQL Pipelines",
         "Data Modeling",
@@ -72,18 +78,19 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      title: "📊 Observability & Tools",
+      title: "📊 Observability, Security & Tools",
       colorClass: "orange",
       tags: [
         "Prometheus",
         "Grafana",
         "Node Exporter",
         "AlertManager",
-        "Azure Monitor",
+        "Azure Monitor / Log Analytics (KQL)",
+        "Microsoft Sentinel (SIEM/SOAR)",
+        "Defender for Cloud",
         "Git & GitHub",
         "Jira",
         "Agile / Scrum",
-        "Draw.io",
         "Linux (Ubuntu, RHEL)",
         "Windows Server"
       ]
@@ -110,10 +117,22 @@ const PORTFOLIO_DATA = {
       tags: [
         "Terraform",
         "Docker & Kubernetes",
-        "IAM & RBAC",
-        "VPC Architecture",
-        "Security Groups",
+        "Entra ID / RBAC",
+        "NSG & JIT VM Access",
+        "Microsoft Sentinel",
+        "Defender for Cloud",
+        "Key Vault & Disk Encryption",
         "Audit Logging"
+      ]
+    },
+    {
+      title: "AI-Augmented Engineering",
+      colorClass: "default",
+      tags: [
+        "Claude Code for IaC scaffolding",
+        "LLM-assisted debugging & docs",
+        "Engineering decision logs (DECISIONS.md)",
+        "LLM-powered K8s log analysis (capstone)"
       ]
     }
   ],
@@ -127,17 +146,56 @@ const PORTFOLIO_DATA = {
         label: "⚡ Flagship Project",
         cssClass: "badge-flagship"
       },
-      status: "In Progress",
+      status: "Complete",
       title: "The Migration Arc",
       repo: "the-migration-arc",
       repoUrl: "https://github.com/imrajankumar95/the-migration-arc",
       description:
-        "Multi-cloud container deployment pipeline built at George Brown College. Takes a Flask application from local Docker on WSL2 through AWS ECS (Fargate) and AWS EKS (Kubernetes) with LoadBalancer exposure. Phase 4 (Azure AKS) planned. Each phase adds a real layer of production infrastructure: containerization, managed container services, and Kubernetes orchestration.",
+        "Multi-cloud container journey completed in four phases: a Flask application taken from local Docker on WSL2 to AWS ECS (Fargate), then to Kubernetes on AWS EKS, and finally to Azure AKS. Every phase is documented with READMEs, architecture diagrams, screenshots, and a DECISIONS.md engineering log. All cloud resources were torn down after validation - total spend kept near $0.",
       architecture:
-        "Flask App (WSL2) -> Docker -> AWS ECR -> AWS ECS (Fargate) -> AWS EKS (eksctl + kubectl) -> Azure AKS (planned)",
+        "Flask App (WSL2) -> Docker -> AWS ECR -> AWS ECS (Fargate) -> AWS EKS -> Azure AKS",
       problem:
-        "Demonstrates the complete build-to-deploy lifecycle that cloud and DevOps engineers own in production: local containerization, cloud container registries, managed container services, and Kubernetes deployments across multiple cloud providers.",
-      stack: ["Docker", "Flask", "WSL2", "AWS ECR", "AWS ECS Fargate", "AWS EKS", "eksctl", "kubectl", "IAM", "GitHub Actions"]
+        "Demonstrates the complete build-to-deploy lifecycle that cloud and DevOps engineers own in production: containerization, cloud container registries, managed container services, and Kubernetes deployments on two cloud providers - plus the cost discipline to tear it all down when done.",
+      stack: ["Docker", "Flask", "AWS ECR", "AWS ECS Fargate", "AWS EKS", "Azure AKS", "kubectl", "eksctl", "IAM", "GitHub Actions"]
+    },
+    {
+      id: "local-to-cloud-starter",
+      flagship: false,
+      badge: {
+        label: "🚀 Live · CI/CD",
+        cssClass: "badge-cloud"
+      },
+      status: "Shipped · Live",
+      title: "Local-to-Cloud Starter",
+      repo: "local-to-cloud-starter",
+      repoUrl: "https://github.com/imrajankumar95/local-to-cloud-starter",
+      liveUrl: "https://ashy-bay-0d76ae90f.7.azurestaticapps.net",
+      description:
+        "First project shipped to production and still live today: a static site containerized with NGINX and Docker for local development, deployed to Azure Static Web Apps through a GitHub Actions pipeline. Every push to main triggers an automatic build and deploy - zero manual steps.",
+      architecture:
+        "NGINX + Docker (local, WSL2) -> GitHub Push -> GitHub Actions -> Azure Static Web Apps",
+      problem:
+        "Proves the simplest complete path from local development to a live cloud endpoint with zero-touch deployment - the CI/CD foundation pattern reused in every later project.",
+      stack: ["NGINX", "Docker", "GitHub Actions", "Azure Static Web Apps", "WSL2", "Git"]
+    },
+    {
+      id: "k8s-log-explainer",
+      flagship: false,
+      badge: {
+        label: "🤖 AI · AKS Capstone",
+        cssClass: "badge-obs"
+      },
+      status: "In Progress · Ships Jul 2026",
+      title: "K8s Log Explainer",
+      repo: "k8s-log-explainer",
+      repoUrl: null,
+      description:
+        "Capstone in flight: an application on Azure AKS ships pod logs to an LLM API that returns plain-English incident summaries - applied AIOps. Infrastructure provisioned with Terraform, deployed via GitHub Actions, with Prometheus and Grafana dashboards on top. Repository goes public at launch.",
+      architecture:
+        "AKS Pods -> Log Collector -> LLM API -> Plain-English Incident Summary + Prometheus / Grafana",
+      problem:
+        "On-call engineers drown in raw Kubernetes logs. This capstone turns log noise into readable incident explanations - combining cloud infrastructure, DevOps automation, observability, and applied AI in a single system.",
+      stack: ["Azure AKS", "Terraform", "GitHub Actions", "Prometheus", "Grafana", "LLM API", "Python"]
     },
     {
       id: "infra-monitoring",
@@ -151,11 +209,11 @@ const PORTFOLIO_DATA = {
       repo: "infrastructure-monitoring",
       repoUrl: "https://github.com/imrajankumar95/infrastructure-monitoring",
       description:
-        "Full observability stack deployed with Docker Compose - Prometheus for metrics scraping, Grafana for custom dashboards, Node Exporter for host-level metrics (CPU, memory, disk, network), and AlertManager with Slack and email notification channels. Monitors the Migration Arc app and validated by deploying the identical stack to an AWS cloud VM.",
+        "Full observability stack deployed with Docker Compose - Prometheus for metrics scraping, Grafana for custom dashboards, Node Exporter for host-level metrics (CPU, memory, disk, network), and AlertManager with Slack and email notification channels. The dashboards and alert rules are being folded into the K8s Log Explainer capstone.",
       architecture:
         "Node Exporter -> Prometheus Scrape -> Grafana Dashboards -> AlertManager -> Slack / Email Alerts",
       problem:
-        "Production systems need observability before they need new features. This stack replicates what engineering teams actually run - custom dashboards, threshold-based alerting, and cross-environment portability validated on both local Docker and an AWS VM.",
+        "Production systems need observability before they need new features. This stack replicates what engineering teams actually run - custom dashboards, threshold-based alerting, and cross-environment portability.",
       stack: ["Prometheus", "Grafana", "Node Exporter", "AlertManager", "Docker Compose", "AWS EC2", "Slack Integration"]
     },
     {
@@ -165,7 +223,7 @@ const PORTFOLIO_DATA = {
         label: "☁ Azure · Linux",
         cssClass: "badge-cloud"
       },
-      status: "In Progress",
+      status: "Complete",
       title: "Azure VM + Bash Automation",
       repo: "azure-vm-nginx-automation",
       repoUrl: "https://github.com/imrajankumar95/azure-vm-nginx-automation",
@@ -189,7 +247,7 @@ const PORTFOLIO_DATA = {
       institution: "George Brown College, Toronto, ON",
       date: "Jan 2026 - Dec 2026 (includes mandatory co-op, Fall 2026)",
       description:
-        "Coursework: Cloud Infrastructure & Virtualization, Linux Administration, Cybersecurity Fundamentals, DevOps, Database Management. Program includes a mandatory industry co-op placement in Fall 2026.",
+        "Coursework: Azure Administration (AZ-104), Azure Architecture, Azure Security (AZ-500), AWS Cloud Practitioner & Solutions Architect, Cloud Infrastructure & Virtualization, Linux Administration, DevOps. Program includes a mandatory industry co-op placement in Fall 2026.",
       certs: null,
       placeholder: "📎 Official transcript will be attached upon completion."
     },
@@ -202,27 +260,28 @@ const PORTFOLIO_DATA = {
       date: "2023 - 2026",
       description: null,
       certs: [
+        "Azure Administrator Associate (AZ-104) - Microsoft (Jul 2026)",
         "Azure Data Engineer Associate (DP-203) - Microsoft",
-        "Microsoft Azure Fundamentals (AZ-900) - Microsoft (May 2026)",
+        "Azure Fundamentals (AZ-900) - Microsoft (May 2026)",
         "Microsoft 365 Copilot & Agent Administration Fundamentals (AB-900) - Microsoft (May 2026)",
+        "Microsoft Applied Skills ×3 - Azure Networking · Azure Monitor · Secure Storage (Jun 2026)",
         "Data Engineer in Python - DataCamp (Jan 2025)",
         "Agentic AI on AWS - BESA (2026)",
-        "Free Data Engineering Bootcamp - DataExpert.io",
-        "Combined Excellence: Data Engineering + Analytical Engineering - DataExpert.io"
+        "Data Engineering + Analytical Engineering Bootcamps - DataExpert.io"
       ],
-      placeholder: "📎 Certificates available on request."
+      placeholder: "📎 Verification badges available on Credly and Microsoft Learn."
     },
     {
       id: "certs-inprogress",
       fullWidth: false,
       icon: "📜",
-      title: "Certifications In Progress",
+      title: "Certifications - Next Up",
       institution: "Microsoft · AWS",
-      date: "Expected 2026",
+      date: "Expected 2026 - 2027",
       description: null,
       certs: [
-        "Azure Administrator Associate (AZ-104) - Microsoft",
-        "AWS Solutions Architect Associate - AWS"
+        "Azure Security Engineer (AZ-500) - GBC coursework and labs complete, exam planned",
+        "AWS Certified Solutions Architect - Associate - GBC coursework underway"
       ],
       placeholder: "📎 Certificates will be added upon completion."
     },
